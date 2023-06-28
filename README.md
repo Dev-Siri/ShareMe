@@ -4,5 +4,5 @@
 
 ## About
 
-Share me is a Full stack social media application made with React.js, Tailwindcss and Sanity.io.
+Share me is a Full stack social media application made with React, Next.js, TailwindCSS and Sanity.io.
 You can get the deployed version [here](https://shareme-siri.netlify.app/)
