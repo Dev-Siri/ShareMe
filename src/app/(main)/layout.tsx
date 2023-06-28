@@ -26,7 +26,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
         {categories.slice(0, categories.length - 1).map((category) => (
           <Link
             href={`/category/${category.name}`}
-            className="flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration:200 ease-in-out capitalize"
+            className="flex items-center px-5 gap-3 my-1 text-gray-500 hover:text-black transition-all duration:200 ease-in-out capitalize"
             key={category.name}
           >
             <Image

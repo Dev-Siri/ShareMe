@@ -70,7 +70,7 @@ export default async function Pin({
             width={250}
           />
         </Link>
-        <div className="absolute inset-0 w-[310px] md:w-[250px] group-hover:visible invisible h-full flex flex-col justify-between p-1 pr-2 pt-6 pb-2 z-50">
+        <div className="absolute inset-0 w-[310px] md:w-[250px] group-hover:visible invisible h-full flex flex-col justify-between p-1 pr-2 pt-1 pb-2 z-50">
           <section className="flex items-center justify-between">
             <div className="flex gap-2">
               <a

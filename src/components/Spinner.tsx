@@ -1,4 +1,4 @@
-export default function Spinner({ message }: { message: string }) {
+export default function Spinner({ message }: { message?: string }) {
   return (
     <div
       role="progressbar"

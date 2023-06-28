@@ -4,7 +4,11 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ["cdn.sanity.io", "lh3.googleusercontent.com"],
+    domains: [
+      "cdn.sanity.io",
+      "lh3.googleusercontent.com",
+      "images.unsplash.com",
+    ],
   },
   typescript: { ignoreBuildErrors: true },
 };

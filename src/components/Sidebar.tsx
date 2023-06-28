@@ -62,6 +62,8 @@ function SidebarUI({ children, setToggleSidebar, user }: SidebarUIProps) {
             src={user.picture}
             className="w-10 h-10 rounded-full"
             alt="user-profile"
+            height={40}
+            width={40}
           />
           <p>{user.name}</p>
         </Link>
@@ -95,7 +97,13 @@ export default function Sidebar({ children, user, closeIcon }: Props) {
             />
           </Link>
           <Link href={`user-profile/${user?.sub}`}>
-            <Image src={user?.picture!} alt="logo" className="w-28" />
+            <Image
+              src={user?.picture!}
+              alt="logo"
+              height={112}
+              width={112}
+              className="w-28"
+            />
           </Link>
         </div>
         {toggleSidebar && (

@@ -27,10 +27,19 @@ export interface SaveData {
   postedBy: SanityUser;
 }
 
+export interface Comment {
+  _key: string;
+  postedBy: SanityUser;
+  comment: string;
+}
+
 export interface Pin {
+  title: string;
+  about: string;
   image: SanityAsset;
   _id: string;
   destination: string;
   postedBy: SanityUser;
   save?: SaveData[];
+  comments?: Comment[];
 }
