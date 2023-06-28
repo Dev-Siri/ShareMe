@@ -1,50 +1,33 @@
-import Image from "next/image";
-// import { redirect } from "next/navigation";
-
-// import { client } from "@/lib/client";
 import jwtDecode from "jwt-decode";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+
 import GoogleLoginButton from "./google-login";
 
-export interface GoogleUser {
-  aud: string;
-  azp: string;
-  email: string;
-  email_verified: boolean;
-  exp: number;
-  given_name: string;
-  iat: number;
-  iss: string;
-  jti: string;
-  name: string;
-  nbf: number;
-  picture: string;
-  sub: string;
-}
-
-export interface SanityUser {
-  userName: string;
-  image: string;
-  _id: string;
-  userId?: string;
-}
+import client from "@/db/lib/client";
+import { GoogleUser } from "@/types";
+import { cookies } from "next/headers";
 
 async function addUserToDB(credentialsToken: string) {
   "use server";
 
-  const user = jwtDecode<GoogleUser>(credentialsToken);
+  const { sub, name, picture } = jwtDecode<GoogleUser>(credentialsToken);
 
-  console.log(user);
+  const doc = {
+    _id: sub,
+    _type: "user",
+    userName: name,
+    image: picture,
+  };
 
-  // const doc = {
-  //   _id: googleId,
-  //   _type: "user",
-  //   userName: name,
-  //   image: imageUrl,
-  // };
+  await client.createIfNotExists(doc);
 
-  // await client.createIfNotExists(doc);
+  cookies().set("auth_token", credentialsToken, {
+    expires: new Date(9999, 0, 1),
+    sameSite: true,
+  });
 
-  // redirect("/");
+  redirect("/");
 }
 
 export default function Login() {
