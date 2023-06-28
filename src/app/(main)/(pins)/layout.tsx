@@ -8,23 +8,7 @@ export default function PinsLayout({ children }: PropsWithChildren) {
       <section className="bg-gray-50">
         <Navbar />
       </section>
-      <section className="h-full">
-        {children}
-        {/* <Routes>
-          <Route path="/category/:categoryId" element={<Feed />} />
-          <Route
-            path="/pin-detail/:pinId"
-            element={<PinDetail user={user} />}
-          />
-          <Route path="/create-pin" element={<CreateAPin user={user} />} />
-          <Route
-            path="/search"
-            element={
-              <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            }
-          />
-        </Routes> */}
-      </section>
+      <section className="h-full">{children}</section>
     </div>
   );
 }
