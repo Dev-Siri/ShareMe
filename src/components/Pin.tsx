@@ -10,14 +10,19 @@ import urlFor from "@/db/lib/image";
 import useSession from "@/hooks/useSession";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
-import DeleteButton from "./DeleteButton";
-import SaveButton from "./SaveButton";
+import PinButton from "./PinButton";
 
 interface Props {
   pin: Pin;
 }
 
-async function savePin(id: string, alreadySaved: boolean) {
+async function savePin({
+  id,
+  alreadySaved,
+}: {
+  id: string;
+  alreadySaved: boolean;
+}) {
   "use server";
   const user = useSession();
 
@@ -41,7 +46,7 @@ async function savePin(id: string, alreadySaved: boolean) {
   revalidatePath("/");
 }
 
-async function deletePin(id: string) {
+async function deletePin({ id }: { id: string }) {
   "use server";
   await client.delete(id);
 
@@ -88,18 +93,26 @@ export default async function Pin({
                 {save?.length} Saved
               </button>
             ) : (
-              <SaveButton
-                savePin={savePin}
-                alreadySaved={alreadySaved}
-                id={_id}
-              />
+              <PinButton
+                action={savePin}
+                actionArgs={{ id: _id, alreadySaved }}
+                className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
+                pinId={_id}
+              >
+                Save
+              </PinButton>
             )}
           </section>
           <section className="flex justify-between items-center gap-2 w-full">
             {postedBy?._id === user?.sub && (
-              <DeleteButton id={_id} deletePin={deletePin}>
+              <PinButton
+                pinId={_id}
+                actionArgs={{ id: _id }}
+                action={deletePin}
+                className="bg-white p-2 opacity-70 hover:opacity-100 font-bold px-5 py-1 text-dark rounded-3xl hover:shadow-md outline-none"
+              >
                 <AiTwotoneDelete />
-              </DeleteButton>
+              </PinButton>
             )}
           </section>
         </div>
