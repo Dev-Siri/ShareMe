@@ -19,7 +19,6 @@ async function addComment(formData: FormData) {
   const comment = formData.get("comment");
   const pinId = formData.get("pinId");
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const user = useSession();
 
   if (

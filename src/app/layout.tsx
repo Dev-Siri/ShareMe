@@ -20,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={lato.className}>
-        <GoogleOAuthProvider clientId={process.env.PUBLIC_GOOGLE_API_KEY!}>
-          {children}
-        </GoogleOAuthProvider>
-      </body>
+    <html lang="en" className={lato.className}>
+      <GoogleOAuthProvider clientId={process.env.PUBLIC_GOOGLE_API_KEY!}>
+        {children}
+      </GoogleOAuthProvider>
     </html>
   );
 }

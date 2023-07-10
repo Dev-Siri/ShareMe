@@ -1,4 +1,5 @@
 import { createClient } from "next-sanity";
+import "server-only";
 
 import { apiVersion, dataset, projectId, token, useCdn } from "../env";
 

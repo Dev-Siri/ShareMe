@@ -10,7 +10,6 @@ import { cookies } from "next/headers";
 
 async function addUserToDB(credentialsToken: string) {
   "use server";
-
   const { sub, name, picture } = jwtDecode<GoogleUser>(credentialsToken);
 
   const doc = {
@@ -32,31 +31,33 @@ async function addUserToDB(credentialsToken: string) {
 
 export default function Login() {
   return (
-    <main className="flex justify-start items-center flex-col h-screen">
-      <div className="relative w-full h-full">
-        <video
-          src="/share.webm"
-          loop
-          controls={false}
-          muted
-          autoPlay
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
-          <div className="p-5">
-            <Image
-              src="/logo-white.avif"
-              alt="Logo"
-              priority
-              height={130}
-              width={130}
-            />
-          </div>
-          <div className="shadow-2xl">
-            <GoogleLoginButton handler={addUserToDB} />
+    <body>
+      <main className="flex justify-start items-center flex-col h-screen">
+        <div className="relative w-full h-full">
+          <video
+            src="/share.webm"
+            loop
+            controls={false}
+            muted
+            autoPlay
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
+            <div className="p-5">
+              <Image
+                src="/logo-white.avif"
+                alt="Logo"
+                priority
+                height={130}
+                width={130}
+              />
+            </div>
+            <div className="shadow-2xl">
+              <GoogleLoginButton handler={addUserToDB} />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </body>
   );
 }

@@ -17,7 +17,6 @@ async function savePin(formData: FormData) {
   const image = formData.get("image");
   const category = formData.get("category");
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const user = useSession();
 
   if (

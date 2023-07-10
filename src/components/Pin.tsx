@@ -19,7 +19,6 @@ interface Props {
 
 async function savePin(id: string, alreadySaved: boolean) {
   "use server";
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const user = useSession();
 
   if (alreadySaved) return;

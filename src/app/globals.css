@@ -9,3 +9,12 @@
 .hide-scrollbar {
   scrollbar-width: none;
 }
+
+/* for some reason, I need to put this :not for it to work ¯\_(ツ)_/¯ */
+#sidebar-toggle:not(:checked) + #sidebar {
+  @apply hidden;
+}
+
+#sidebar-toggle:checked + #sidebar {
+  @apply fixed animate-slide-in;
+}
